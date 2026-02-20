@@ -1,0 +1,9 @@
+In this example, we'll use the Sites API to select a VPS Anchor that you can localize to.
+
+<b>Instructions</b>
+Make sure you've been signed in.
+Choose an Organization where the site you're looking for is.
+Choose the site you'll want to localize to and tap the <i>Localize</i> button.
+Physically go to the location you’ve chosen and point the camera towards it.
+(optional) follow the arrrow to point you in the general direction of the anchor.
+After a few seconds you should see the "Tracking" message and a cube spawn at the wayspot origin.

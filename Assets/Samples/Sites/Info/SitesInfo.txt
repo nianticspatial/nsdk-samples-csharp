@@ -1,0 +1,7 @@
+This example demonstrates the information available on Niantic Spatial Sites API.
+
+<b>Instructions</b>
+Make sure you've been signed in.
+Choose an Organization where the site you're looking for is.
+Choose the site you'll want to localize to.
+Choose the site you'll want to inspect.

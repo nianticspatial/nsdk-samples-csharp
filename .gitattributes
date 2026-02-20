@@ -1,0 +1,2 @@
+# TextMesh Pro fonts (large SDF/TTF assets)
+Assets/TextMesh[[:space:]]Pro/Fonts/* filter=lfs diff=lfs merge=lfs -text
