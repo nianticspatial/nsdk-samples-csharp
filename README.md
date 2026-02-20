@@ -1,5 +1,5 @@
 # NSDK Samples
-This Unity package provides Sample Scenes with easy-to-understand examples for many of the Niantic Spatial SDK (NSDK) features.
+This Kotlin project provides examples for many of the Niantic Spatial SDK (NSDK) features.
 
 ## __Quick links:__
 * [NSDK API Reference](https://www.nianticspatial.com/docs/api/unity/?platform=unity)
