@@ -1553,7 +1553,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1886981095}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 20ed43241e6ee462183d2fa555f15a85, type: 3}
+  m_Script: {fileID: 11500000, guid: 768a67aec21b4753a3de76189701413d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _vertexColorMaterial: {fileID: 0}
