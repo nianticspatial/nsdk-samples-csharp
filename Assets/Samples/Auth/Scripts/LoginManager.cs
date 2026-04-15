@@ -3,19 +3,33 @@ using UnityEngine;
 
 /// <summary>
 /// Class that manages login and logout to/from the sample user session.
+///
+/// When login requested, opens a URL in the browser which points to the login web portal.
+/// On success, a "deep link" is returned with a session token (query param name remains <c>refreshToken</c> for portal compatibility).
+///
+/// If reusing this code outside the sample, it is recommended to change the redirectType in the URL to "nsdk-external"
 /// </summary>
 public static class LoginManager
 {
     public static bool IsLoginInProgress { get; private set; }
-    public static bool IsLoggedIn => UserSessionManager.IsSessionInProgress;
+    public static bool IsLoggedIn => NSSampleSessionManager.IsSessionInProgress;
     public static event System.Action LoginComplete;
     public static event System.Action LogoutComplete;
 
     public static void LoginRequested()
     {
         Application.deepLinkActivated += OnDeepLinkActivated;
-        Application.OpenURL($"{AuthEndpoints.Settings.SignInEndpoint}?redirectType=unity-app");
+        // On success, the "nsdk-unity-samples" redirectType returns a deep link with "nsdk-unity-samples://..." scheme.
+        // NOTE: This can be replaced with "nsdk-external" if reusing this code (so as not to conflict).
+        // (AndroidManifest.xml and iOSURLSchemes in ProjectSettings.asset will need to be updated).
+        Application.OpenURL($"{AuthEndpoints.Settings.SignInEndpoint}?redirectType=nsdk-unity-samples");
         IsLoginInProgress = true;
+    }
+
+    public static void CancelLoginRequested()
+    {
+        Application.deepLinkActivated -= OnDeepLinkActivated;
+        IsLoginInProgress = false;
     }
 
     public static void LogoutRequested()
@@ -23,10 +37,10 @@ public static class LoginManager
         if (!IsLoggedIn)
         {
             Application.OpenURL(
-                $"{AuthEndpoints.Settings.SignOutEndpoint}?refreshToken={UserSessionManager.RefreshToken}");
+                $"{AuthEndpoints.Settings.SignOutEndpoint}?refreshToken={NSSampleSessionManager.SampleToken}");
         }
 
-        UserSessionManager.StopUserSession();
+        NSSampleSessionManager.StopNSSampleSession();
         LogoutComplete?.Invoke();
     }
     
@@ -37,13 +51,10 @@ public static class LoginManager
         Application.deepLinkActivated -= OnDeepLinkActivated;
         IsLoginInProgress = false;
         
-        // Extract the access token and refresh token from the URL.
-        // Params are formatted as "paramName=paramValue"
-        
-        var userSessionAccessToken = GetParamValue("accessToken", url);
-        var userSessionRefreshToken = GetParamValue("refreshToken", url);
-        
-        UserSessionManager.SetUserSession(userSessionRefreshToken, userSessionAccessToken);
+        // Session token from the portal (query name is still refreshToken for backward compatibility).
+        var userSessionToken = GetParamValue("refreshToken", url);
+
+        NSSampleSessionManager.SetNSSampleSession(userSessionToken);
         LoginComplete?.Invoke();
     }
     

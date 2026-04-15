@@ -1,1 +1,0 @@
-This example demonstrates the accuracy of NSDK's World Positioning System, in comparison to that of the device's compass reading. Observe the superior stability and accuracy of the left compass in the scene, which is using the World Positioning System, as compared to the right compass in the scene, which is using the device's compass. 

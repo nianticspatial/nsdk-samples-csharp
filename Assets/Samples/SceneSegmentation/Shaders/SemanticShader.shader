@@ -3,7 +3,7 @@
     Properties
     {
         _MainTex ("_MainTex", 2D) = "white" {}
-        _SemanticTex ("_SemanticTex", 2D) = "red" {}
+        _SceneSegmentationTex ("_SceneSegmentationTex", 2D) = "red" {}
         _Color ("_Color", Color) = (1,1,1,1)
     }
     SubShader
@@ -49,7 +49,7 @@
             }
 
             sampler2D _MainTex;
-            sampler2D _SemanticTex;
+            sampler2D _SceneSegmentationTex;
             fixed4 _Color;
 
             fixed4 frag (v2f i) : SV_Target
@@ -57,7 +57,7 @@
                 //convert coordinate space
                 float2 semanticUV = float2(i.texcoord.x / i.texcoord.z, i.texcoord.y / i.texcoord.z);
                 
-                float4 semanticCol = tex2D(_SemanticTex, semanticUV);
+                float4 semanticCol = tex2D(_SceneSegmentationTex, semanticUV);
                 return float4(semanticCol.r,semanticCol.g,semanticCol.b,0.8f);
             }
             ENDCG

@@ -4,7 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using NianticSpatial.NSDK.AR.Meshing;
-using NianticSpatial.NSDK.AR.Subsystems.Semantics;
+using NianticSpatial.NSDK.AR.Subsystems.SceneSegmentation;
 using UnityEngine.UI;
 
 public class MeshingFiltering : MonoBehaviour
@@ -23,8 +23,8 @@ public class MeshingFiltering : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _meshingExtension.AllowList = new List<SemanticsChannel>() { SemanticsChannel.Ground };
-        _meshingExtension.BlockList = new List<SemanticsChannel>() { SemanticsChannel.Sky, SemanticsChannel.Person, SemanticsChannel.Water, SemanticsChannel.PetExperimental, SemanticsChannel.LoungeableExperimental };
+        _meshingExtension.AllowList = new List<SceneSegmentationChannel>() { SceneSegmentationChannel.Ground };
+        _meshingExtension.BlockList = new List<SceneSegmentationChannel>() { SceneSegmentationChannel.Sky };
         DisableMeshFiltering();
     }
 

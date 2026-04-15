@@ -1,7 +1,7 @@
 // Copyright 2022-2025 Niantic.
 
 using NianticSpatial.NSDK.AR.Occlusion;
-using NianticSpatial.NSDK.AR.Semantics;
+using NianticSpatial.NSDK.AR.SceneSegmentation;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.XR.ARFoundation;
@@ -9,14 +9,14 @@ using UnityEngine.XR.ARFoundation;
 public class DepthOcclusionSample : MonoBehaviour
 {
     [SerializeField] private AROcclusionManager _occlusionManager;
-    [SerializeField] private ARSemanticSegmentationManager _segmentationManager;
+    [SerializeField] private ARSceneSegmentationManager _segmentationManager;
     [SerializeField] private NsdkOcclusionExtension _occlusionExtension;
     [SerializeField] private SliderToggle _suppressionToggle;
     [SerializeField] private SliderToggle _stabilizationToggle;
     [SerializeField] private Text _loadingText;
 
     private bool _occlusionReady;
-    private bool _semanticsReady;
+    private bool _sceneSegmentationReady;
 
     private void OnEnable()
     {
@@ -24,7 +24,7 @@ public class DepthOcclusionSample : MonoBehaviour
         _stabilizationToggle.interactable = false;
 
         _occlusionManager.frameReceived += OnOcclusionReady;
-        _segmentationManager.MetadataInitialized += OnSemanticsReady;
+        _segmentationManager.MetadataInitialized += OnSceneSegmentationReady;
     }
 
     private void OnDisable()
@@ -37,9 +37,9 @@ public class DepthOcclusionSample : MonoBehaviour
             _occlusionManager.frameReceived -= OnOcclusionReady;
         }
 
-        if (!_semanticsReady)
+        if (!_sceneSegmentationReady)
         {
-            _segmentationManager.MetadataInitialized -= OnSemanticsReady;
+            _segmentationManager.MetadataInitialized -= OnSceneSegmentationReady;
         }
     }
 
@@ -51,17 +51,17 @@ public class DepthOcclusionSample : MonoBehaviour
         TryActivateUI();
     }
 
-    private void OnSemanticsReady(ARSemanticSegmentationModelEventArgs modelEventArgs)
+    private void OnSceneSegmentationReady(ARSceneSegmentationModelEventArgs modelEventArgs)
     {
-        _semanticsReady = true;
-        _segmentationManager.MetadataInitialized -= OnSemanticsReady;
+        _sceneSegmentationReady = true;
+        _segmentationManager.MetadataInitialized -= OnSceneSegmentationReady;
 
         TryActivateUI();
     }
 
     private void TryActivateUI()
     {
-        if (_occlusionReady && _semanticsReady)
+        if (_occlusionReady && _sceneSegmentationReady)
         {
             _suppressionToggle.onValueChanged.AddListener(ToggleSuppression);
             _stabilizationToggle.onValueChanged.AddListener(ToggleStabilization);

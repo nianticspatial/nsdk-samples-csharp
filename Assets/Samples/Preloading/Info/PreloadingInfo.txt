@@ -1,0 +1,3 @@
+This example provides interfaces to test model preloading. To request to download a model file, make a selection with a dropdown menu and click the corresponding download button.
+
+To request to register a local model file, first enter a local model file path in the Preloader Test Manager component. Then, select the Custom mode from the dropdown menu and press download.  The result will be displayed in the status area.

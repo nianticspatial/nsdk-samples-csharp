@@ -1,0 +1,9 @@
+This screen allows you to manage your authentication session.
+
+<b>Instructions</b>
+
+Login (with Sample Backend unchecked): Uses the standard developer authentication flow.
+
+Login (with Sample Backend checked): Uses sample enterprise authentication endpoints.
+
+Logout: Clears your current session tokens.

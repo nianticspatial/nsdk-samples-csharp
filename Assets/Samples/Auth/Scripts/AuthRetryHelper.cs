@@ -1,6 +1,7 @@
 // Copyright Niantic Spatial.
 
 using System;
+using System.Threading;
 using System.Threading.Tasks;
 using NianticSpatial.NSDK.AR.Auth;
 using UnityEngine;
@@ -19,7 +20,7 @@ namespace NianticSpatial.NSDK.AR.Utilities
     /// Usage:
     /// <code>
     /// var retryHelper = new AuthRetryHelper();
-    /// var result = await retryHelper.WithRetryAsync(() => sitesClient.GetSelfUserInfoAsync());
+    /// var result = await retryHelper.WithRetryAsync(ct => sitesClient.GetSelfUserInfoAsync(ct), cancellationToken);
     /// </code>
     /// </summary>
     public class AuthRetryHelper
@@ -33,20 +34,43 @@ namespace NianticSpatial.NSDK.AR.Utilities
         /// Pre-flight: waits for authorization if not already authorized. Then runs the operation; on failure waits 1s and retries once. If the retry fails, the exception is thrown.
         /// </summary>
         /// <typeparam name="T">The result type</typeparam>
-        /// <param name="operation">The async operation to execute</param>
+        /// <param name="operation">The async operation to execute, receiving a cancellation token</param>
+        /// <param name="cancellationToken">Cancellation token for the entire operation including retries</param>
         /// <returns>The result of the operation</returns>
-        public async Task<T> WithRetryAsync<T>(Func<Task<T>> operation)
+        public async Task<T> WithRetryAsync<T>(Func<CancellationToken, Task<T>> operation, CancellationToken cancellationToken)
         {
-            await WaitForAuthorizationIfNeededAsync(InitialAuthWaitSeconds);
+            await WaitForAuthorizationIfNeededAsync(InitialAuthWaitSeconds, cancellationToken);
+            if (cancellationToken.IsCancellationRequested)
+            {
+                // Exit if the operation was cancelled. We could also rethrow cancellation, but during application exit
+                // this results in a more graceful end (no error messages).
+                return default;
+            }
+
             try
             {
-                return await operation();
+                return await operation(cancellationToken);
+            }
+            catch (OperationCanceledException)
+            {
+                // Exit if the operation was cancelled. We could also rethrow cancellation, but during application
+                // exit this results in a more graceful end (no error messages).
+                return default;
             }
             catch (Exception e)
             {
                 Debug.Log($"[AuthRetryHelper] Operation failed: {e.Message}, waiting 1 second before retry...");
-                await Task.Delay(TimeSpan.FromSeconds(RetryDelaySeconds));
-                return await operation();
+                try
+                {
+                    await Task.Delay(TimeSpan.FromSeconds(RetryDelaySeconds), cancellationToken);
+                }
+                catch (OperationCanceledException)
+                {
+                    // Another cancellation catch here, in case cancellation occured during the delay before retrying.
+                    return default;
+                }
+
+                return await operation(cancellationToken);
             }
         }
 
@@ -54,10 +78,12 @@ namespace NianticSpatial.NSDK.AR.Utilities
         /// If not authorized, waits for the NSDK session to become authorized (pre-flight before running the operation).
         /// </summary>
         /// <param name="timeoutSeconds">Maximum time to wait in seconds</param>
-        private static async Task WaitForAuthorizationIfNeededAsync(float timeoutSeconds)
+        /// <param name="cancellationToken">Cancellation token</param>
+        private static async Task WaitForAuthorizationIfNeededAsync(
+            float timeoutSeconds, CancellationToken cancellationToken)
         {
             float elapsed = 0f;
-            while (elapsed < timeoutSeconds)
+            while (elapsed < timeoutSeconds && !cancellationToken.IsCancellationRequested)
             {
                 try
                 {
@@ -71,11 +97,23 @@ namespace NianticSpatial.NSDK.AR.Utilities
                     // If IsAuthorized fails, continue waiting
                 }
 
-                await Task.Delay((int)(AuthPollIntervalSeconds * 1000));
+                try
+                {
+                    await Task.Delay((int)(AuthPollIntervalSeconds * 1000), cancellationToken);
+                }
+                catch (TaskCanceledException)
+                {
+                    // Exit if the operation was cancelled
+                    return;
+                }
+
                 elapsed += AuthPollIntervalSeconds;
             }
 
-            Debug.LogWarning($"[AuthRetryHelper] Authorization timeout after {timeoutSeconds} seconds");
+            if (!cancellationToken.IsCancellationRequested)
+            {
+                Debug.LogWarning($"[AuthRetryHelper] Authorization timeout after {timeoutSeconds} seconds");                
+            }
         }
     }
 }

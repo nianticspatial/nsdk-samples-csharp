@@ -10,7 +10,7 @@
         <action android:name="android.intent.action.VIEW" />
         <category android:name="android.intent.category.DEFAULT" />
         <category android:name="android.intent.category.BROWSABLE" />
-        <data android:scheme="ardk-samples" android:host="auth" />
+        <data android:scheme="nsdk-unity-samples" android:host="signin" />
       </intent-filter>
     </activity>
   </application>

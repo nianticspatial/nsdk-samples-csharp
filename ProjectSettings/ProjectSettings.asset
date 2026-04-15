@@ -173,7 +173,7 @@ PlayerSettings:
   buildNumber:
     Standalone: 0
     VisionOS: 0
-    iPhone: 4000226022000
+    iPhone: 4000426041500
     tvOS: 0
   overrideDefaultApplicationIdentifier: 1
   AndroidBundleVersionCode: 1
@@ -236,7 +236,7 @@ PlayerSettings:
   iOSLaunchScreeniPadCustomStoryboardPath: 
   iOSDeviceRequirements: []
   iOSURLSchemes:
-  - ardk-samples
+  - nsdk-unity-samples
   macOSURLSchemes: []
   iOSBackgroundModes: 0
   iOSMetalForceHardShadows: 0
@@ -300,7 +300,7 @@ PlayerSettings:
   - m_BuildTarget: 
     m_Icons:
     - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: 98a75bbc3d9ee4825895309766666f54, type: 3}
+      m_Icon: {fileID: 2800000, guid: 3adb6735be3c041c9877774ca2a2f8c8, type: 3}
       m_Width: 128
       m_Height: 128
       m_Kind: 0

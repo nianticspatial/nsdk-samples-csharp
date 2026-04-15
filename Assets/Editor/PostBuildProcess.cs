@@ -28,6 +28,16 @@ public class PostBuildProcess : MonoBehaviour
         rootDict.SetBoolean("LSSupportsOpeningDocumentsInPlace", true);
         rootDict.SetBoolean("ITSAppUsesNonExemptEncryption", false);
         File.WriteAllText(plistPath, plist.WriteToString());
+
+
+        string projectPath = PBXProject.GetPBXProjectPath(path);
+        PBXProject project = new PBXProject();
+        project.ReadFromString(File.ReadAllText(projectPath));
+        string frameworkGuid = project.GetUnityFrameworkTargetGuid();
+
+        // XCode 26 requires some Swift compatability flags in the  UnityFramework target
+        project.AddBuildProperty(frameworkGuid, "OTHER_LDFLAGS", "-Xlinker -U -Xlinker __swift_FORCE_LOAD_$_swiftCompatibility51 -Xlinker -U -Xlinker __swift_FORCE_LOAD_$_swiftCompatibility56 -Xlinker -U -Xlinker __swift_FORCE_LOAD_$_swiftCompatibilityConcurrency");
+        File.WriteAllText(projectPath, project.WriteToString());
     }
 }
 

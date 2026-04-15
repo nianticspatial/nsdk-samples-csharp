@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7abc3dbfe57c4ad49b19309f187d9e1a, type: 3}
   m_Name: NSDK Settings
   m_EditorClassIdentifier: 
-  _apiKey: 
   _useNsdkDepth: 1
   _preferLidarIfAvailable: 1
   _useNsdkMeshing: 1
@@ -21,7 +20,7 @@ MonoBehaviour:
   _useNsdkPersistentAnchor: 1
   _useNsdkObjectDetection: 1
   _useNsdkVps2: 1
-  _useNsdkWorldPositioning: 1
+  _useNsdkDeviceMapping: 1
   _locationAndCompassDataSource: 0
   _spoofLocationInfo:
     _latitude: 37.795322
@@ -36,7 +35,7 @@ MonoBehaviour:
     _headingAccuracy: 1
     _rawVector: {x: 0.1, y: 0.2, z: 0.3}
     _timestamp: 123456
-  _unityLogLevel: 3
+  _unityLogLevel: 2
   _fileLogLevel: 5
   _stdoutLogLevel: 5
   _nsdkSimulationParams:
