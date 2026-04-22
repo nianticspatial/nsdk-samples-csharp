@@ -78,7 +78,7 @@ public class VPS2LocalizeDemo : MonoBehaviour
     /// Assertion for the assignment of a serialized field.
     /// </summary>
     private static void AssertComponent<T>(T component) where T : UnityEngine.Object =>
-        Debug.Assert(component != null, $"{nameof(VPS2LocalizeDemo)} missing {component.GetType().Name}!");
+        Debug.Assert(component != null, $"Component of type {typeof(T).Name} is missing!");
 
     private void OnEnable()
     {
