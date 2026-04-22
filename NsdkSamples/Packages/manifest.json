@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "com.nianticspatial.nsdk": "https://github.com/nianticspatial/nsdk-library-upm.git",
+    "com.nianticspatial.nsdk": "https://github.com/nianticspatial/nsdk-library-upm.git#4.1.0-c.279345",
     "com.unity.collab-proxy": "2.9.3",
     "com.unity.ide.rider": "3.0.37",
     "com.unity.ide.visualstudio": "2.0.23",

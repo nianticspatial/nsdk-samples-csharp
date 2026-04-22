@@ -64,15 +64,14 @@ public class Tracker : MonoBehaviour
     
     public void StopTracking()
     {
-        if (_rootAnchor)
-        {
-            _vps2Manager.RemoveAnchor(_rootAnchor);
-            _rootAnchor = null;
-        }
-
-        IsLocalized = false;
-        _vps2Manager.enabled = false;
         _vps2Manager.trackablesChanged.RemoveListener(OnAnchorsChanged);
+        IsLocalized = false;
+
+        // Disable the manager first: its OnDisable calls RemoveAllAnchorsImmediate,
+        // which removes all anchors from the subsystem. Explicit RemoveAnchor after
+        // that would trigger a "no anchor found" error.
+        _vps2Manager.enabled = false;
+        _rootAnchor = null;
     }
 
     private void OnAnchorsChanged(ARTrackablesChangedEventArgs<ARVps2Anchor> args)
@@ -117,6 +116,7 @@ public class Tracker : MonoBehaviour
     {
         _vps2Manager.enabled = true;
         _vps2Manager.DeviceMapLocalizationEnabled = true;
+        _vps2Manager.trackablesChanged.RemoveListener(OnAnchorsChanged);
         _vps2Manager.trackablesChanged.AddListener(OnAnchorsChanged);
 
         var success = _vps2Manager.TryTrackAnchor(anchorPayload, out _rootAnchor);
