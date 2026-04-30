@@ -221,41 +221,27 @@ namespace NianticSpatial.NSDK.AR.Samples
                 return;
             }
 
-            SetDetailsText("⏳ Loading user info...");
+            SetDetailsText("⏳ Loading organizations...");
 
             var token = _cancellationTokenSource.Token;
 
             try
             {
-                var userResult = await _retryHelper.WithRetryAsync(
-                    (ct) => _sitesClientManager.GetSelfUserInfoAsync(ct), token);
-
-                if (_cancellationTokenSource.IsCancellationRequested) return;
-
-                if (userResult.Status != SitesRequestStatus.Success || !userResult.User.HasValue)
-                {
-                    SetDetailsText("❌ Failed to retrieve user information.\nMake sure you're authenticated.");
-                    CreateBackButton("← Back to Mode Selection", ShowModeSelection);
-                    return;
-                }
-
-                _currentUser = userResult.User.Value;
                 _fromNearMe = false;
-                UpdateDetailsForUser(_currentUser.Value);
-
                 var orgsResult = await _retryHelper.WithRetryAsync(
-                    (ct) => _sitesClientManager.GetOrganizationsForUserAsync(_currentUser.Value.Id, ct), token);
+                    (ct) => _sitesClientManager.GetSelfOrganizationInfoAsync(ct), token);
 
                 if (_cancellationTokenSource.IsCancellationRequested) return;
 
                 if (orgsResult.Status == SitesRequestStatus.Success)
                 {
                     _currentOrganizations = new List<OrganizationInfo>(orgsResult.Organizations);
+                    SetDetailsText($"✅ Loaded {_currentOrganizations.Count} organization(s)");
                     CreateOrganizationButtons();
                 }
                 else
                 {
-                    AppendDetailsText("\n\n⚠️ No organizations found");
+                    SetDetailsText("⚠️ No organizations found. Make sure you're authenticated.");
                     CreateBackButton("← Back to Mode Selection", ShowModeSelection);
                 }
             }

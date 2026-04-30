@@ -141,31 +141,14 @@ public class SitesTargetListManager : MonoBehaviour
             return;
         }
 
-        _requestStatusText.text = "⏳ Loading user info...";
+        _requestStatusText.text = "⏳ Loading organizations...";
         ClearListContent();
 
         var token = _cancellationTokenSource.Token;
 
         try
         {
-            // Request user info with retry
-            var userResult = await _retryHelper.WithRetryAsync((ct) => _sitesClientManager.GetSelfUserInfoAsync(ct), token);
-
-            if (token.IsCancellationRequested)
-            {
-                return;
-            }
-
-            if (userResult.Status != SitesRequestStatus.Success || !userResult.User.HasValue)
-            {
-                _requestStatusText.text = "❌ Failed to retrieve user information.\nMake sure you're authenticated.";
-                return;
-            }
-
-            _currentUser = userResult.User.Value;
-
-            // Request organizations for user with retry
-            var orgsResult = await _retryHelper.WithRetryAsync((ct) => _sitesClientManager.GetOrganizationsForUserAsync(_currentUser.Value.Id, ct), token);
+            var orgsResult = await _retryHelper.WithRetryAsync((ct) => _sitesClientManager.GetSelfOrganizationInfoAsync(ct), token);
 
             if (token.IsCancellationRequested)
             {
@@ -179,7 +162,7 @@ public class SitesTargetListManager : MonoBehaviour
             }
             else
             {
-                _requestStatusText.text = "⚠️ No organizations found";
+                _requestStatusText.text = "⚠️ No organizations found. Make sure you're authenticated.";
             }
         }
         catch (System.Exception e)
