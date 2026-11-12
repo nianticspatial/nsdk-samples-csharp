@@ -1,0 +1,437 @@
+{
+  "vps_coverage_area": [
+    {
+      "shape": {
+        "polygon": {
+          "loop": [
+            {
+              "vertex": [
+                {
+                  "lat_degrees": 40.7420382397859,
+                  "lng_degrees": -73.8270013766927
+                },
+                {
+                  "lat_degrees": 40.74203895997609,
+                  "lng_degrees": -73.8270129722102
+                },
+                {
+                  "lat_degrees": 40.742037952378396,
+                  "lng_degrees": -73.8270245303662
+                },
+                {
+                  "lat_degrees": 40.742035255714406,
+                  "lng_degrees": -73.8270356069863
+                },
+                {
+                  "lat_degrees": 40.7420309736156,
+                  "lng_degrees": -73.8270457764015
+                },
+                {
+                  "lat_degrees": 40.7420252706408,
+                  "lng_degrees": -73.82705464780642
+                },
+                {
+                  "lat_degrees": 40.7420183659526,
+                  "lng_degrees": -73.8270618802778
+                },
+                {
+                  "lat_degrees": 40.74201052489461,
+                  "lng_degrees": -73.8270671958759
+                },
+                {
+                  "lat_degrees": 40.7420020487945,
+                  "lng_degrees": -73.8270703903259
+                },
+                {
+                  "lat_degrees": 40.7419932633842,
+                  "lng_degrees": -73.8270713408677
+                },
+                {
+                  "lat_degrees": 40.7419845062822,
+                  "lng_degrees": -73.8270700109732
+                },
+                {
+                  "lat_degrees": 40.741976114019,
+                  "lng_degrees": -73.8270664517505
+                },
+                {
+                  "lat_degrees": 40.7419684091043,
+                  "lng_degrees": -73.82706079997931
+                },
+                {
+                  "lat_degrees": 40.7419616876334,
+                  "lng_degrees": -73.8270532728544
+                },
+                {
+                  "lat_degrees": 40.741956207908295,
+                  "lng_degrees": -73.827044159639
+                },
+                {
+                  "lat_degrees": 40.741952180511404,
+                  "lng_degrees": -73.8270338105489
+                },
+                {
+                  "lat_degrees": 40.7419497602131,
+                  "lng_degrees": -73.8270226232932
+                },
+                {
+                  "lat_degrees": 40.74194904002389,
+                  "lng_degrees": -73.8270110277911
+                },
+                {
+                  "lat_degrees": 40.74195004762019,
+                  "lng_degrees": -73.8269994696503
+                },
+                {
+                  "lat_degrees": 40.741952744280816,
+                  "lng_degrees": -73.8269883930429
+                },
+                {
+                  "lat_degrees": 40.7419570263746,
+                  "lng_degrees": -73.826978223636
+                },
+                {
+                  "lat_degrees": 40.7419627293435,
+                  "lng_degrees": -73.8269693522336
+                },
+                {
+                  "lat_degrees": 40.7419696340259,
+                  "lng_degrees": -73.8269621197588
+                },
+                {
+                  "lat_degrees": 40.7419774750791,
+                  "lng_degrees": -73.8269568041515
+                },
+                {
+                  "lat_degrees": 40.741985951176105,
+                  "lng_degrees": -73.8269536096882
+                },
+                {
+                  "lat_degrees": 40.7419947365854,
+                  "lng_degrees": -73.826952659131
+                },
+                {
+                  "lat_degrees": 40.7420034936887,
+                  "lng_degrees": -73.8269539890102
+                },
+                {
+                  "lat_degrees": 40.7420118859554,
+                  "lng_degrees": -73.8269575482202
+                },
+                {
+                  "lat_degrees": 40.7420195908751,
+                  "lng_degrees": -73.8269631999831
+                },
+                {
+                  "lat_degrees": 40.7420263123519,
+                  "lng_degrees": -73.8269707271055
+                },
+                {
+                  "lat_degrees": 40.7420317920828,
+                  "lng_degrees": -73.8269798403244
+                },
+                {
+                  "lat_degrees": 40.7420358194845,
+                  "lng_degrees": -73.8269901894236
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "vps_localization_target_id": [
+        "70fd95e4368adb1a17bc958991a987a58689a304"
+      ],
+      "localizability": "PRODUCTION"
+    },
+    {
+      "shape": {
+        "polygon": {
+          "loop": [
+            {
+              "vertex": [
+                {
+                  "lat_degrees": 40.74253324001379,
+                  "lng_degrees": -73.829534378267
+                },
+                {
+                  "lat_degrees": 40.7425339599552,
+                  "lng_degrees": -73.8295459738977
+                },
+                {
+                  "lat_degrees": 40.7425329521096,
+                  "lng_degrees": -73.82955753210211
+                },
+                {
+                  "lat_degrees": 40.74253025520801,
+                  "lng_degrees": -73.8295686087039
+                },
+                {
+                  "lat_degrees": 40.742525972891,
+                  "lng_degrees": -73.8295787780347
+                },
+                {
+                  "lat_degrees": 40.74252026972591,
+                  "lng_degrees": -73.8295876492925
+                },
+                {
+                  "lat_degrees": 40.7425133648825,
+                  "lng_degrees": -73.8295948815596
+                },
+                {
+                  "lat_degrees": 40.742505523710506,
+                  "lng_degrees": -73.8296001969042
+                },
+                {
+                  "lat_degrees": 40.742497047541804,
+                  "lng_degrees": -73.82960339106131
+                },
+                {
+                  "lat_degrees": 40.7424882621112,
+                  "lng_degrees": -73.8296043412818
+                },
+                {
+                  "lat_degrees": 40.7424795050377,
+                  "lng_degrees": -73.8296030110501
+                },
+                {
+                  "lat_degrees": 40.7424711128509,
+                  "lng_degrees": -73.8295994514873
+                },
+                {
+                  "lat_degrees": 40.74246340805739,
+                  "lng_degrees": -73.8295937993861
+                },
+                {
+                  "lat_degrees": 40.742456686748,
+                  "lng_degrees": -73.8295862719539
+                },
+                {
+                  "lat_degrees": 40.74245120721841,
+                  "lng_degrees": -73.829577158466
+                },
+                {
+                  "lat_degrees": 40.7424471800435,
+                  "lng_degrees": -73.8295668091483
+                },
+                {
+                  "lat_degrees": 40.7424447599852,
+                  "lng_degrees": -73.8295556217189
+                },
+                {
+                  "lat_degrees": 40.7424440400448,
+                  "lng_degrees": -73.8295440261036
+                },
+                {
+                  "lat_degrees": 40.7424450478891,
+                  "lng_degrees": -73.8295324679145
+                },
+                {
+                  "lat_degrees": 40.7424477447872,
+                  "lng_degrees": -73.8295213913254
+                },
+                {
+                  "lat_degrees": 40.7424520270992,
+                  "lng_degrees": -73.8295112220029
+                },
+                {
+                  "lat_degrees": 40.74245773025841,
+                  "lng_degrees": -73.8295023507476
+                },
+                {
+                  "lat_degrees": 40.74246463509599,
+                  "lng_degrees": -73.829495118477
+                },
+                {
+                  "lat_degrees": 40.7424724762632,
+                  "lng_degrees": -73.8294898031232
+                },
+                {
+                  "lat_degrees": 40.7424809524288,
+                  "lng_degrees": -73.8294866089529
+                },
+                {
+                  "lat_degrees": 40.7424897378585,
+                  "lng_degrees": -73.8294856587169
+                },
+                {
+                  "lat_degrees": 40.74249849493321,
+                  "lng_degrees": -73.8294869889333
+                },
+                {
+                  "lat_degrees": 40.7425068871236,
+                  "lng_degrees": -73.8294905484834
+                },
+                {
+                  "lat_degrees": 40.742514591922,
+                  "lng_degrees": -73.8294962005764
+                },
+                {
+                  "lat_degrees": 40.7425213132373,
+                  "lng_degrees": -73.82950372800602
+                },
+                {
+                  "lat_degrees": 40.7425267927727,
+                  "lng_degrees": -73.8295128414974
+                },
+                {
+                  "lat_degrees": 40.74253081995239,
+                  "lng_degrees": -73.8295231908242
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "vps_localization_target_id": [
+        "7768789fe3e2dfd1a65af7a03796a655c76b2348"
+      ],
+      "localizability": "EXPERIMENTAL"
+    },
+    {
+      "shape": {
+        "polygon": {
+          "loop": [
+            {
+              "vertex": [
+                {
+                  "lat_degrees": 40.7421262398472,
+                  "lng_degrees": -73.8276683771231
+                },
+                {
+                  "lat_degrees": 40.7421269599705,
+                  "lng_degrees": -73.8276799726633
+                },
+                {
+                  "lat_degrees": 40.7421259523062,
+                  "lng_degrees": -73.8276915308244
+                },
+                {
+                  "lat_degrees": 40.7421232555783,
+                  "lng_degrees": -73.8277026074321
+                },
+                {
+                  "lat_degrees": 40.74211897342081,
+                  "lng_degrees": -73.8277127768177
+                },
+                {
+                  "lat_degrees": 40.7421132703949,
+                  "lng_degrees": -73.8277216481771
+                },
+                {
+                  "lat_degrees": 40.742106365665,
+                  "lng_degrees": -73.8277288805886
+                },
+                {
+                  "lat_degrees": 40.742098524576306,
+                  "lng_degrees": -73.827734196115
+                },
+                {
+                  "lat_degrees": 40.74209004845769,
+                  "lng_degrees": -73.8277373904841
+                },
+                {
+                  "lat_degrees": 40.742081263042,
+                  "lng_degrees": -73.8277383409388
+                },
+                {
+                  "lat_degrees": 40.742072505947704,
+                  "lng_degrees": -73.8277370109546
+                },
+                {
+                  "lat_degrees": 40.74206411370499,
+                  "lng_degrees": -73.8277334516429
+                },
+                {
+                  "lat_degrees": 40.7420564088229,
+                  "lng_degrees": -73.8277277997868
+                },
+                {
+                  "lat_degrees": 40.7420496873954,
+                  "lng_degrees": -73.8277202725843
+                },
+                {
+                  "lat_degrees": 40.7420442077228,
+                  "lng_degrees": -73.82771115930191
+                },
+                {
+                  "lat_degrees": 40.7420401803856,
+                  "lng_degrees": -73.8277008101576
+                },
+                {
+                  "lat_degrees": 40.7420377601519,
+                  "lng_degrees": -73.8276896228628
+                },
+                {
+                  "lat_degrees": 40.742037040029494,
+                  "lng_degrees": -73.8276780273381
+                },
+                {
+                  "lat_degrees": 40.7420380476925,
+                  "lng_degrees": -73.8276664691922
+                },
+                {
+                  "lat_degrees": 40.7420407444169,
+                  "lng_degrees": -73.8276553925972
+                },
+                {
+                  "lat_degrees": 40.74204502656939,
+                  "lng_degrees": -73.8276452232198
+                },
+                {
+                  "lat_degrees": 40.7420507295895,
+                  "lng_degrees": -73.8276363518631
+                },
+                {
+                  "lat_degrees": 40.74205763431361,
+                  "lng_degrees": -73.827629119448
+                },
+                {
+                  "lat_degrees": 40.74206547539751,
+                  "lng_degrees": -73.8276238039125
+                },
+                {
+                  "lat_degrees": 40.74207395151291,
+                  "lng_degrees": -73.8276206095301
+                },
+                {
+                  "lat_degrees": 40.74208273692769,
+                  "lng_degrees": -73.8276196590599
+                },
+                {
+                  "lat_degrees": 40.7420914940233,
+                  "lng_degrees": -73.8276209890289
+                },
+                {
+                  "lat_degrees": 40.7420998862695,
+                  "lng_degrees": -73.8276245483278
+                },
+                {
+                  "lat_degrees": 40.7421075911566,
+                  "lng_degrees": -73.8276302001757
+                },
+                {
+                  "lat_degrees": 40.74211431259,
+                  "lng_degrees": -73.8276377273756
+                },
+                {
+                  "lat_degrees": 40.742119792268305,
+                  "lng_degrees": -73.8276468406616
+                },
+                {
+                  "lat_degrees": 40.7421238196103,
+                  "lng_degrees": -73.827657189815
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "vps_localization_target_id": [
+        "5df4996635ba6ec3246520c26c1e70aa2a1c4abd"
+      ],
+      "localizability": "EXPERIMENTAL"
+    }
+  ],
+  "status": "SUCCESS"
+}

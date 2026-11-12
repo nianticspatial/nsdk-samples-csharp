@@ -1,0 +1,41 @@
+{
+  "vps_localization_target": [
+    {
+      "id": "70fd95e4368adb1a17bc958991a987a58689a304",
+      "shape": {
+        "point": {
+          "lat_degrees": 40.741994,
+          "lng_degrees": -73.827012
+        }
+      },
+      "name": "Checker/Chess Board Tables",
+      "image_url": "https://lh3.googleusercontent.com/QBT4RV0yiovE3AZGrM_0N23U6apMvIY9KF8sVLGlkVERUL2js19K9AXRWuXEmdrO8mJLXOVrhafl5EPX0zxgrMpqc_odLGvXF4Ud6tT2",
+      "default_anchor": "ChUI16TOzeXaz6ddEJHToPG159Pk9wEYv5WtsYIyKicKFQimg6zorp6gp/QBEIqh1qColuyRIxIJCgASBSUAAIA/HQAAgD8yEhG2ouGW/F5EQBmuh9Ij8HRSwA\u003d\u003d"
+    },
+    {
+      "id": "5df4996635ba6ec3246520c26c1e70aa2a1c4abd",
+      "shape": {
+        "point": {
+          "lat_degrees": 40.742082,
+          "lng_degrees": -73.827679
+        }
+      },
+      "name": "Turtle Playground",
+      "image_url": "https://lh3.googleusercontent.com/ZeG9CiNyWlf7Mp7mYLNdJAlA4qOh45AZm0WH3Qp4N_WpgsqFKSMBZcbpoDlK5wkivFSZlQ47AYBjrKflu14E33B5xw",
+      "default_anchor": "ChYIhN3o2eK+gqHQARCio56k/v/V5cQBGIrumeugMSonChUIvNOr9bWi6qGqARCm/frSoN6Nn2wSCQoAEgUlAACAPx0AAIA/MhIRQh/q4/1eREAZ/IQbzvh0UsA\u003d"
+    },
+    {
+      "id": "7768789fe3e2dfd1a65af7a03796a655c76b2348",
+      "shape": {
+        "point": {
+          "lat_degrees": 40.742489,
+          "lng_degrees": -73.829545
+        }
+      },
+      "name": "VFW 3427 Memorial Flag",
+      "image_url": "https://lh3.googleusercontent.com/Ti8OBcHfv3Hz8U_V2tcsCMakf9LZDJjYy7ZiMu8bmUWtVOk5yYI5tfdO4rhULiEIz6RIIv7__4AwTrcs-YoM5eT21w",
+      "default_anchor": "ChUI3MSLieq4hqLaARCQ95bs0pGUvW8Yz9n+m/swKiYKFAihmo/6iPrwoQwQkIeau9Cu0ukIEgkKABIFJQAAgD8dAACAPzISEWteKxwLX0RAGbAAupcXdVLA"
+    }
+  ],
+  "status": "SUCCESS"
+}
