@@ -137,7 +137,6 @@ namespace NianticSpatial.NSDK.AR.Samples
             {
                 if (_useMyLocationButton != null) _useMyLocationButton.interactable = true;
                 SetDetailsText("❌ Could not get location. If you denied permission, please enable Location in app settings and try again.");
-                Input.location.Stop();
                 yield break;
             }
 
@@ -148,7 +147,6 @@ namespace NianticSpatial.NSDK.AR.Samples
                 _inputFields[1].text = data.longitude.ToString("F6");
             }
 
-            Input.location.Stop();
             if (_useMyLocationButton != null) _useMyLocationButton.interactable = true;
             SetDetailsText("Enter coordinates to search for nearby sites:");
         }
@@ -452,6 +450,10 @@ namespace NianticSpatial.NSDK.AR.Samples
                 text += $"Pipeline Job ID: {asset.PipelineJobId}\n";
             if (asset.PipelineJobStatus != AssetPipelineJobStatus.Unspecified)
                 text += $"Pipeline Status: {asset.PipelineJobStatus}\n";
+            // Said only when the map is split. The typed data below describes Areas[0] alone, so
+            // knowing there are others is what explains why it covers less than the whole asset.
+            if (asset.Areas != null && asset.Areas.Count > 1)
+                text += $"Areas: {asset.Areas.Count}\n";
             if (asset.MeshData.HasValue)
             {
                 var mesh = asset.MeshData.Value;

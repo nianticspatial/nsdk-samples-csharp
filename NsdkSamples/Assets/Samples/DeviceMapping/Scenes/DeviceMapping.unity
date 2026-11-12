@@ -3294,6 +3294,8 @@ GameObject:
   - component: {fileID: 1531590615}
   - component: {fileID: 1531590614}
   - component: {fileID: 1531590617}
+  - component: {fileID: 1531590618}
+  - component: {fileID: 1531590619}
   - component: {fileID: 1531590616}
   m_Layer: 0
   m_Name: XR Origin
@@ -3362,10 +3364,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0544cc554e1443d8a1d2b256464e569b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <trackablesChanged>k__BackingField:
-    m_PersistentCalls:
-      m_Calls: []
-  _defaultAnchorGameObject: {fileID: 0}
   _universalLocalizationEnabled: 0
   _universalLocalizationRequestsPerSecond: 1
   _vpsMapLocalizationEnabled: 0
@@ -3375,6 +3373,38 @@ MonoBehaviour:
   _deviceMapLocalizationEnabled: 1
   _deviceMapLocalizationFramerate: 10
   _vpsDebuggerEnabled: 0
+--- !u!114 &1531590618
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1531590613}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6de11fb2e66441d68089e85075a170fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <trackablesChanged>k__BackingField:
+    m_PersistentCalls:
+      m_Calls: []
+  _defaultAnchorGameObject: {fileID: 0}
+--- !u!114 &1531590619
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1531590613}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d88c049943874b4895eb0217ac148565, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <trackablesChanged>k__BackingField:
+    m_PersistentCalls:
+      m_Calls: []
+  _defaultAssetGameObject: {fileID: 0}
 --- !u!1 &1534848768
 GameObject:
   m_ObjectHideFlags: 0

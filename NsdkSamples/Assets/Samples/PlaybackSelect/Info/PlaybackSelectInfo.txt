@@ -1,0 +1,8 @@
+This example downloads a validation scan from Niantic Spatial Sites and plays it in place of the camera in every sample.
+
+<b>Instructions</b>
+Make sure you've been signed in with a token that can list scans.
+Choose an organization, then a site.
+Tap a scan to download it. Downloads keep running when you leave this screen.
+Tap a downloaded scan to select it. It plays on a loop when you next open a sample from Home.
+Tap "Use live camera" to go back to the camera.

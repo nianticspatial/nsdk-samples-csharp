@@ -119,6 +119,15 @@ public static class NSSampleSessionManager
         s_nsSampleSessionToken = null;
         SaveSessionData();
         AuthClient.StaticLogout();
+
+        try
+        {
+            Metadata.SetAccessToken(string.Empty);
+        }
+        catch (InvalidOperationException)
+        {
+            // NSDK context not initialized — there is no in-memory access token to clear.
+        }
     }
 
     private static void SaveSessionData()

@@ -1,48 +1,35 @@
-// Copyright 2022-2025 Niantic.
+// Copyright Niantic Spatial
 
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.XR.ARFoundation;
-using UnityEngine.XR.ARSubsystems;
-using Object = UnityEngine.Object;
 
-#if UNITY_EDITOR
-using UnityEditor;
-#endif
-
-public class SceneSwitcher : MonoBehaviour, ISerializationCallbackReceiver
+public class SceneSwitcher : MonoBehaviour
 {
-    [SerializeField]
-    private Object _targetScene;
-
-    [SerializeField] [HideInInspector]
-    private string _targetSceneName;
+    private const string DEFAULT_TARGET_SCENE = "Home";
 
     [SerializeField] private bool _waitForARSessionReady = true;
     [SerializeField] private float _arSessionTimeout = 10f;
     [SerializeField] private bool _waitForCameraFrames = true;
+    private string _targetScene = DEFAULT_TARGET_SCENE;
 
-    private HashSet<string> PortraitScenes = new HashSet<string>() {"Home","RemoteAuthoring","CompassScene" };
     private bool _isARSessionReady = false;
     private bool _hasReceivedCameraFrame = false;
 
+
+    public string TargetScene
+    {
+        get => _targetScene;
+        set => _targetScene = value;
+    }
+
     private void Start()
     {
-        //in-case no button
-        if (TryGetComponent<Button>(out Button button))
-        {
-            //check if it has a listener, if then hook it up.
-            int listenerCount = button.onClick.GetPersistentEventCount();
-            if (listenerCount == 0)
-            {
-                button.onClick.AddListener(SwitchToScene);
-            }
-        }
-
         if (_waitForARSessionReady)
         {
             StartCoroutine(WaitForARSessionReady());
@@ -52,6 +39,7 @@ public class SceneSwitcher : MonoBehaviour, ISerializationCallbackReceiver
             _isARSessionReady = true;
         }
     }
+
     // Wait for ARSession to be ready before exiting AR scene to prevent race condition on ARCore XR Plugin.
     private IEnumerator WaitForARSessionReady()
     {
@@ -141,40 +129,37 @@ public class SceneSwitcher : MonoBehaviour, ISerializationCallbackReceiver
                state == ARSessionState.Ready;
     }
 
-    public void SwitchToScene()
+    /// <summary>Runs before the scene loads; the switch goes ahead when it returns true.</summary>
+    public Func<Task<bool>> BeforeSwitchAsync { get; set; }
+
+    public async void SwitchToScene()
     {
         // If ARSession is not ready, don't allow scene switch.
         if (_waitForARSessionReady && !_isARSessionReady)
         {
             return;
         }
-        
-        OrientationPicker();
-        SceneManager.LoadScene(_targetSceneName, LoadSceneMode.Single);
-    }
 
-    public void OnBeforeSerialize()
-    {
-#if UNITY_EDITOR
-        if (_targetScene != null && _targetScene is SceneAsset sceneAsset)
+        if (BeforeSwitchAsync != null)
         {
-            _targetSceneName = sceneAsset.name;
-        }
-#endif
-    }
+            bool proceed;
+            try
+            {
+                proceed = await BeforeSwitchAsync();
+            }
+            catch (Exception e)
+            {
+                Debug.LogException(e);
+                return;
+            }
 
-    public void OnAfterDeserialize()
-    {
-    }
-    private void OrientationPicker()
-    {
-        if (PortraitScenes.Contains(_targetSceneName))
-        {
-            Screen.orientation = ScreenOrientation.Portrait;
+            if (!proceed || this == null)
+            {
+                return;
+            }
         }
-        else
-        {
-            Screen.orientation = ScreenOrientation.AutoRotation;
-        }
+
+        Screen.orientation = ScreenOrientation.AutoRotation;
+        SceneManager.LoadScene(TargetScene, LoadSceneMode.Single);
     }
 }

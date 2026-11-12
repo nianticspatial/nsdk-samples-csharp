@@ -8,7 +8,7 @@ public class VersionRead : MonoBehaviour
 
     public Text uiTextBox;
 
-    private const string SamplesVersion = "4.1.0-26051913";
+    private const string SamplesVersion = "4.5.0-26110800";
 
     void Awake()
     {
